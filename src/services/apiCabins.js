@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer';
 import axios from 'axios';
 
 export async function getCabins() {
@@ -20,6 +21,19 @@ export async function deleteCabins(id) {
   `);
   } catch (error) {
     console.error('Error deleting cabin:', error);
+    throw error;
+  }
+}
+
+export async function createCabin(newCabin) {
+  try {
+    const response = await axios.post(
+      `http://localhost:3000/api/v1/user/cabins`,
+      { newCabin }
+    );
+    console.log(response);
+  } catch (error) {
+    console.error('Cabin cannot be created:', error);
     throw error;
   }
 }
