@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FileInput = styled.input`
+const FileInput = styled.input.attrs({ type: 'file' })`
   font-size: 1.4rem;
   border-radius: var(--border-radius-sm);
 
@@ -21,3 +21,5 @@ export const FileInput = styled.input`
     }
   }
 `;
+
+export default FileInput;

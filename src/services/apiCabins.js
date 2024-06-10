@@ -7,7 +7,7 @@ export async function getCabins() {
       'http://localhost:3000/api/v1/user/cabins'
     );
     const data = response.data.cabins;
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error('Error fetching cabins:', error);
@@ -29,9 +29,16 @@ export async function createCabin(newCabin) {
   try {
     const response = await axios.post(
       `http://localhost:3000/api/v1/user/cabins`,
-      { newCabin }
+      {
+        name: newCabin.name,
+        regularPrice: parseInt(newCabin.regularPrice),
+        discount: parseInt(newCabin.discount),
+        maxCapacity: parseInt(newCabin.maxCapacity),
+        description: newCabin.description,
+        image: newCabin.image,
+      }
     );
-    console.log(response);
+    // console.log(response);
   } catch (error) {
     console.error('Cabin cannot be created:', error);
     throw error;
