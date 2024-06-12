@@ -38,8 +38,9 @@ export async function createCabin(newCabin) {
         image: newCabin.image,
       }
     );
-    // console.log(response);
+    console.log(response);
   } catch (error) {
+    // console.log(response);
     console.error('Cabin cannot be created:', error);
     throw error;
   }

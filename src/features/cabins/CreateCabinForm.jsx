@@ -1,12 +1,13 @@
-import Form from '../../ui/Form';
-import Input from '../../ui/Input';
-import { TextArea } from '../../ui/TextArea';
-import { FileInput } from '../../ui/FileInput';
-import { useForm } from 'react-hook-form';
-import Button from '../../ui/Button';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createCabin } from '../../services/apiCabins';
+import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+
+import Form from '../../ui/Form';
+import Input from '../../ui/Input';
+import TextArea from '../../ui/TextArea';
+import FileInput from '../../ui/FileInput';
+import Button from '../../ui/Button';
 import FormRow from '../../ui/FormRow';
 
 export const CreateCabinForm = () => {
@@ -28,8 +29,8 @@ export const CreateCabinForm = () => {
   });
 
   function submitHandler(data) {
-    console.log(data);
-    mutate(data);
+    console.log({ ...data, image: data.image[0] });
+    mutate({ ...data, image: data.image[0] });
   }
 
   function errorHandler(err) {
