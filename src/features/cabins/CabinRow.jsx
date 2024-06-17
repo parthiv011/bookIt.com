@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { CreateCabinForm } from './CreateCabinForm';
 import { useDeleteCabin } from './useDeleteCabin';
 import { useCreateCabin } from './useCreateCabin';
+import Modal from '../../ui/Modal';
+import { ConfirmDelete } from '../../ui/ConfirmDelete';
 
 const TableRow = styled.div`
   display: grid;
@@ -42,7 +44,6 @@ const Discount = styled.div`
 `;
 
 export const CabinRow = ({ cabin }) => {
-  const [showForm, setShowForm] = useState(false);
   const { isDeleting, mutateDelete } = useDeleteCabin();
   const { isCreating, mutateCabin } = useCreateCabin();
 
@@ -82,15 +83,30 @@ export const CabinRow = ({ cabin }) => {
           <button onClick={handleDuplicate}>
             <HiClipboard />{' '}
           </button>
-          <button onClick={() => setShowForm((show) => !show)}>
-            <HiPencil />
-          </button>
-          <button onClick={() => mutateDelete(cabinId)} disabled={isDeleting}>
-            <HiTrash />
-          </button>
+          <Modal>
+            <Modal.OpenWindow opens="edit">
+              <button disabled={isCreating}>
+                <HiPencil />
+              </button>
+            </Modal.OpenWindow>
+            <Modal.Window name="edit">
+              <CreateCabinForm cabinToEdit={cabin} />
+            </Modal.Window>
+            <Modal.OpenWindow opens="confirm-delete">
+              <button>
+                <HiTrash />
+              </button>
+            </Modal.OpenWindow>
+            <Modal.Window name="confirm-delete">
+              <ConfirmDelete
+                resourceName={'Cabins'}
+                disabled={isDeleting}
+                onConfirm={() => mutateDelete(cabinId)}
+              />
+            </Modal.Window>
+          </Modal>
         </div>
       </TableRow>
-      {showForm && <CreateCabinForm cabinToEdit={cabin} />}
     </>
   );
 };
