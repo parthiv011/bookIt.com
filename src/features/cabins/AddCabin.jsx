@@ -2,7 +2,7 @@ import Button from '../../ui/Button';
 import { CreateCabinForm } from './CreateCabinForm';
 import Modal from '../../ui/Modal';
 
-export function AddCabin() {
+export default function AddCabin() {
   return (
     <div>
       <Modal>
