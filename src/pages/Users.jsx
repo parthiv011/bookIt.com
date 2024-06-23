@@ -1,5 +1,9 @@
-import React from "react";
+import SignupForm from '../features/authentication/SignupForm';
 
 export const Users = () => {
-  return <div>Users</div>;
+  return (
+    <div>
+      <SignupForm />
+    </div>
+  );
 };
