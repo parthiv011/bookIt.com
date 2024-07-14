@@ -35,7 +35,7 @@ const FilterButton = styled.button`
   }
 `;
 
-function Filter({ filteredField, options }) {
+export default function Filter({ filteredField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filteredField) || options.at(0).value;
 
@@ -57,5 +57,3 @@ function Filter({ filteredField, options }) {
     </StyledFilter>
   );
 }
-
-export default Filter;

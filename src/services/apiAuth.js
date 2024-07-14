@@ -68,3 +68,22 @@ export async function logout() {
     throw error;
   }
 }
+
+export async function updateCurrentUser({ id, fname, lname, Avatar }) {
+  console.log(Avatar);
+  try {
+    const response = await axios.put(
+      `${BACKEND_URL}user/me`,
+      { id, firstName: fname, lastName: lname, Avatar },
+      {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+  } catch (error) {
+    console.error('User cannot found', error);
+    throw error;
+  }
+}

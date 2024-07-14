@@ -34,6 +34,7 @@ export const CreateCabinForm = ({ cabinToEdit = {}, onCloseModal }) => {
         { newCabinData: { ...data, image: image }, id: editId },
         {
           onSuccess: (data) => {
+            console.log(data);
             reset();
             onCloseModal?.();
           },
