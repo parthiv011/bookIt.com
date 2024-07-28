@@ -6,6 +6,10 @@ import { Table } from '../../ui/Table';
 
 import { formatCurrency } from '../../utils/helpers';
 import { formatDistanceFromNow } from '../../utils/helpers';
+import Modal from '../../ui/Modal';
+import { Menus } from '../../ui/Menus';
+import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from 'react-icons/hi2';
+import { useNavigate } from 'react-router-dom';
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -43,6 +47,7 @@ export function BookingRow({
     numNights,
     numGuests,
     totalPrice,
+    extraPrice,
     status,
     guests: { fullName: guestName, email },
     cabin: { name: cabinName },
@@ -53,6 +58,8 @@ export function BookingRow({
     checkedIn: 'green',
     checkedOut: 'silver',
   };
+
+  const navigate = useNavigate();
 
   return (
     <Table.Row>
@@ -79,6 +86,22 @@ export function BookingRow({
       <Tag type={statusToTagName[status]}>{status}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
+
+      <Modal>
+        <Menus.Menu>
+          <Menus.Toggle id={bookingId} />
+          <Menus.List id={bookingId}>
+            <Menus.Button
+              icon={<HiEye />}
+              onClick={() => navigate(`/bookings/${bookingId}`)}
+            >
+              See Details
+            </Menus.Button>
+            <Menus.Button icon={<HiArrowDownOnSquare />}>Check in</Menus.Button>
+            <Menus.Button icon={<HiArrowUpOnSquare />}>Check Out</Menus.Button>
+          </Menus.List>
+        </Menus.Menu>
+      </Modal>
     </Table.Row>
   );
 }

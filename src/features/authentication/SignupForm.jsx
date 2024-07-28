@@ -70,7 +70,7 @@ function SignupForm() {
         />
       </FormRow>
 
-      <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
+      <FormRow label="Confirm password" error={errors?.passwordConfirm?.message}>
         <Input
           type="password"
           id="passwordConfirm"

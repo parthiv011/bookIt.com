@@ -102,7 +102,7 @@ const Footer = styled.footer`
 
 export function BookingBox({ booking }) {
   const {
-    created_at,
+    createdAt,
     startDate,
     endDate,
     numNights,
@@ -113,9 +113,16 @@ export function BookingBox({ booking }) {
     hasBreakfast,
     observations,
     isPaid,
-    guests: { fullName: guestName, email, country, countryFlag, nationalID },
-    cabins: { name: cabinName },
+    guests: {
+      fullName: guestName,
+      email,
+      Nationality,
+      countryFlag,
+      nationalId,
+    },
+    cabin: { name: cabinName },
   } = booking;
+  console.log(booking);
 
   return (
     <StyledBookingDataBox>
@@ -138,14 +145,16 @@ export function BookingBox({ booking }) {
 
       <Section>
         <Guest>
-          {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
+          {countryFlag && (
+            <Flag src={countryFlag} alt={`Flag of ${Nationality}`} />
+          )}
           <p>
             {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ''}
           </p>
           <span>&bull;</span>
           <p>{email}</p>
           <span>&bull;</span>
-          <p>National ID {nationalID}</p>
+          <p>National ID {nationalId}</p>
         </Guest>
 
         {observations && (
@@ -176,7 +185,7 @@ export function BookingBox({ booking }) {
       </Section>
 
       <Footer>
-        <p>Booked {format(new Date(created_at), 'EEE, MMM dd yyyy, p')}</p>
+        <p>Booked {format(new Date(createdAt), 'EEE, MMM dd yyyy, p')}</p>
       </Footer>
     </StyledBookingDataBox>
   );

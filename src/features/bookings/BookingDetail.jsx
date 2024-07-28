@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 import { BookingBox } from './BookingBox';
-import { Row } from '../../ui/Row';
-import { Heading } from '../../ui/Heading';
+import Row from '../../ui/Row';
+import Heading from '../../ui/Heading';
 import { Tag } from '../../ui/Tag';
-import { ButtonGroup } from '../../ui/ButtonGroup';
-import { Button } from '../../ui/Button';
-import { ButtonText } from '../../ui/ButtonText';
+import { Spinner } from '../../ui/Spinner';
+import ButtonGroup from '../../ui/ButtonGroup';
+import Button from '../../ui/Button';
+import ButtonText from '../../ui/ButtonText';
 
 import { useMoveBack } from '../../hooks/useMoveBack';
-
+import { useBookingbyId } from '../bookings/useBookingbyId';
 const HeadingGroup = styled.div`
   display: flex;
   gap: 2.4rem;
@@ -17,23 +18,24 @@ const HeadingGroup = styled.div`
 `;
 
 export function BookingDetail() {
-  const booking = {};
-  const status = 'checked-in';
+  const { booking, isLoading } = useBookingbyId();
 
   const moveBack = useMoveBack();
 
   const statusToTagName = {
     unconfirmed: 'blue',
-    'checked-in': 'green',
-    'checked-out': 'silver',
+    checkedIn: 'green',
+    checkedOut: 'silver',
   };
+  if (isLoading) return <Spinner />;
 
+  const { status } = booking;
   return (
     <>
       <Row type="horizontal">
         <HeadingGroup>
-          <Heading as="h1">Booking #X</Heading>
-          <Tag type={statusToTagName[status]}>{status.replace('-', ' ')}</Tag>
+          <Heading as="h1">Booking {booking.id}</Heading>
+          <Tag type={statusToTagName[status]}>{status}</Tag>
         </HeadingGroup>
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
       </Row>
