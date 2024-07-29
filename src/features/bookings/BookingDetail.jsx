@@ -11,6 +11,8 @@ import ButtonText from '../../ui/ButtonText';
 
 import { useMoveBack } from '../../hooks/useMoveBack';
 import { useBookingbyId } from '../bookings/useBookingbyId';
+import { HiArrowDownOnSquare } from 'react-icons/hi2';
+import { useNavigate } from 'react-router-dom';
 const HeadingGroup = styled.div`
   display: flex;
   gap: 2.4rem;
@@ -19,6 +21,7 @@ const HeadingGroup = styled.div`
 
 export function BookingDetail() {
   const { booking, isLoading } = useBookingbyId();
+  const navigate = useNavigate();
 
   const moveBack = useMoveBack();
 
@@ -46,6 +49,11 @@ export function BookingDetail() {
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
+        {status === 'unconfirmed' && (
+          <Button icon={<HiArrowDownOnSquare />} onClick={() => navigate(`/`)}>
+            Check in
+          </Button>
+        )}
       </ButtonGroup>
     </>
   );
