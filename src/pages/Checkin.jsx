@@ -1,5 +1,5 @@
-import CheckinBooking from '../features/check-in-out/CheckinBooking';
+// import CheckinBooking from '../features/check-in-out/CheckinBooking';
 
-export const Checkin = () => {
-  return <CheckinBooking />;
-};
+// export const Checkin = () => {
+//   return <CheckinBooking />;
+// };

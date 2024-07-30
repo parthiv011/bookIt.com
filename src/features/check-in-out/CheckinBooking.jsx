@@ -1,3 +1,3 @@
-export const CheckinBooking = () => {
-  return <div>CheckinBooking</div>;
-};
+// export const CheckinBooking = () => {
+//   return <div>CheckinBooking</div>;
+// };

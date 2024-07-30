@@ -13,7 +13,7 @@ import { Settings } from './pages/Settings';
 import { PageNotFound } from './pages/PageNotFound';
 import { Users } from './pages/Users';
 import { BookingInfoPage } from './pages/BookingInfoPage';
-import { Checkin } from './pages/Checkin';
+// import { Checkin } from './pages/Checkin';
 
 import GlobalStyle from './styles/GlobalStyles';
 import { AppLayout } from './ui/AppLayout';
@@ -53,7 +53,7 @@ const App = () => {
                 path="/bookings/:bookingId"
                 element={<BookingInfoPage />}
               />
-              <Route path="/checkin/:bookingId" element={<Checkin />} />
+              {/* <Route path="/checkin/:bookingId" element={<Checkin />} /> */}
               <Route path="/settings" element={<Settings />} />
             </Route>
             <Route path="/login" element={<Login />} />
