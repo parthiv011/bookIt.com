@@ -69,7 +69,7 @@ export const SalesChart = ({ bookings = [], numDays }) => {
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data}>
           <XAxis dataKey="label" />
-          <YAxis unit="$" />
+          <YAxis />
           <CartesianGrid strokeDasharray="8" />
           <Tooltip />
           <Area

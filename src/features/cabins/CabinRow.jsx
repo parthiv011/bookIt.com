@@ -71,7 +71,7 @@ export const CabinRow = ({ cabin }) => {
   return (
     <>
       <Table.Row role="row">
-        <Img src={`http://localhost:3000${image}`} alt={name} />
+        <Img src={`${image}`} alt={name} />
         <Cabin>{name}</Cabin>
         <div>Fits up to {maxCapacity} people</div>
         <Price>{formatCurrency(regularPrice)}</Price>

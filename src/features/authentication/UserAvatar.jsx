@@ -27,7 +27,7 @@ const UserAvatar = () => {
 
   return (
     <StyledUserAvatar>
-      <Avatar src={`http://localhost:3000${avatar}`} alt={firstName} />
+      <Avatar src={`${avatar}`} alt={firstName} />
       <span>
         {firstName} {lastName}
       </span>
